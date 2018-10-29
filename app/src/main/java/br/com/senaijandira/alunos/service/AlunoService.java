@@ -7,13 +7,17 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface AlunoService {
     // 10.0.2.2 e o ip da nossa maquina local do emulador
     String URL_BASE = "http://10.0.2.2:5001/";
 
-    @GET("/aluno")
+    @GET("/alunos")
     Call<List<Aluno>> obertAlunos();
+
+    @GET("/aluno/(id)")
+    Call<Aluno> obertAluno(@Path("id") int id);
 
     @POST("/novo")
     @FormUrlEncoded

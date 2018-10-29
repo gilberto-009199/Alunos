@@ -11,17 +11,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <Button
+        <ProgressBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Chamar API"
-            android:onClick="chamaApi"/>
-
+            android:id="@+id/progressBar"
+            android:layout_gravity="center"/>
         <ListView
             android:id="@+id/lstAluno"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
+            android:layout_height="wrap_content"
+            android:visibility="gone">
         </ListView>
 
 
