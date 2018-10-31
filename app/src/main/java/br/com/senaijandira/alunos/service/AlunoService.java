@@ -2,7 +2,9 @@ package br.com.senaijandira.alunos.service;
 
 import java.util.List;
 import br.com.senaijandira.alunos.service.model.Aluno;
+import br.com.senaijandira.alunos.service.model.ApiResult;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -20,9 +22,11 @@ public interface AlunoService {
     Call<Aluno> obertAluno(@Path("id") int id);
 
     @POST("/novo")
-    @FormUrlEncoded
+    Call<ApiResult> cadastrarAluno(@Body Aluno aluno);
+
+    /*@FormUrlEncoded
     Call addAluno(@Field("nome") String nome, @Field("data_nascimento") int dtNasc,
-                  @Field("matricula") String matricula,@Field("cpf") String cpf );
+                  @Field("matricula") String matricula,@Field("cpf") String cpf );*/
 
 
 

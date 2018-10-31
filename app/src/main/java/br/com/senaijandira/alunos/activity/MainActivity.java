@@ -1,29 +1,24 @@
-package br.com.senaijandira.alunos;
+package br.com.senaijandira.alunos.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import java.util.List;
 
+import br.com.senaijandira.alunos.presenter.MainPresenter;
+import br.com.senaijandira.alunos.view.MainView;
+import br.com.senaijandira.alunos.R;
 import br.com.senaijandira.alunos.adapter.AlunosAdapter;
-import br.com.senaijandira.alunos.service.AlunoService;
 import br.com.senaijandira.alunos.service.ServiceFactory;
 import br.com.senaijandira.alunos.service.model.Aluno;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity implements MainView {
+public class MainActivity extends AppCompatActivity implements MainView,AdapterView.OnItemClickListener {
 
     private ListView listaAlunos;
     private AlunosAdapter alunosAdapter;
@@ -46,18 +41,17 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
         listaAlunos.setAdapter(alunosAdapter);
 
-
+        listaAlunos.setOnItemClickListener(this);
 
         presenter = new MainPresenter(this,
                 ServiceFactory.create());
 
-        presenter.carregarAlunos();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        //carregarAlunos();
+        presenter.carregarAlunos();
     }
 
     @Override
@@ -78,5 +72,15 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     public void AbreCadastro(View view) {
         startActivity(new Intent(this,CadastraActivity.class));
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Aluno aluno = alunosAdapter.getItem(position);
+
+        Intent intent = new Intent(this, VisualizarActivity.class);
+        intent.putExtra("idAluno",aluno.getId());
+        
+
     }
 }

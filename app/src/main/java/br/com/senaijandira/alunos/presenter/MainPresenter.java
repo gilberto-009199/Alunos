@@ -1,11 +1,11 @@
-package br.com.senaijandira.alunos;
+package br.com.senaijandira.alunos.presenter;
 
 import android.util.Log;
 
 import java.util.List;
 
+import br.com.senaijandira.alunos.view.MainView;
 import br.com.senaijandira.alunos.service.AlunoService;
-import br.com.senaijandira.alunos.service.ServiceFactory;
 import br.com.senaijandira.alunos.service.model.Aluno;
 import retrofit2.Call;
 import retrofit2.Callback;
