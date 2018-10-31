@@ -11,6 +11,7 @@ import android.widget.ProgressBar;
 
 import java.util.List;
 
+import br.com.senaijandira.alunos.VisualizarActivity;
 import br.com.senaijandira.alunos.presenter.MainPresenter;
 import br.com.senaijandira.alunos.view.MainView;
 import br.com.senaijandira.alunos.R;
@@ -80,7 +81,8 @@ public class MainActivity extends AppCompatActivity implements MainView,AdapterV
 
         Intent intent = new Intent(this, VisualizarActivity.class);
         intent.putExtra("idAluno",aluno.getId());
-        
+
+        startActivity(intent);
 
     }
 }
